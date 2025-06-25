@@ -1,0 +1,8 @@
+name: Main
+on:
+  workflow_dispatch:
+jobs:
+  main:
+    uses: ./.github/workflows/callable.yml
+    secrets:
+      PASSWORD: ${{ secrets.PASSWORD }}

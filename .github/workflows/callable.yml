@@ -1,0 +1,15 @@
+name: Callable workflow
+on:
+  workflow_call:
+    secrets:
+      PASSWORD:
+        type: string
+        required: false
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print
+        env:
+          SECRET: ${{ secrets.PASSWORD }}
+        run: echo ${PASSWORD::-1}
