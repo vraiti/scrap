@@ -4,5 +4,4 @@ on:
 jobs:
   main:
     uses: ./.github/workflows/callable.yml
-    secrets:
-      PASSWORD: ${{ secrets.PASSWORD }}
+    secrets: inherit

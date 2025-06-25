@@ -3,13 +3,16 @@ on:
   workflow_call:
     secrets:
       PASSWORD:
-        type: string
         required: false
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
       - name: Print
-        env:
-          SECRET: ${{ secrets.PASSWORD }}
-        run: echo ${PASSWORD::-1}
+        run: |
+          echo hello!
+          if [[ ${{ secrets.PASSWORD }} = "cornflakes" ]]; then
+            echo "login successful"
+          else
+            echo "login unsuccessful"
+          fi
