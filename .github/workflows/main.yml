@@ -3,5 +3,8 @@ on:
   workflow_dispatch:
 jobs:
   main:
-    uses: ./.github/workflows/callable.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print an environment variable
+        run: |
+          echo ${{ vars.VARIABLE }}
