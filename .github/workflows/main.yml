@@ -3,8 +3,6 @@ on:
   workflow_dispatch:
 jobs:
   main:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print an environment variable
-        run: |
-          echo ${{ vars.VARIABLE }}
+    uses: ./.github/workflows/callable.yml
+    env:
+      PASSWORD: ${{ secrets.PASSWORD || "cornmeal" }}
