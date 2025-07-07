@@ -1,8 +1,15 @@
 name: Main
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   main:
-    uses: ./.github/workflows/callable.yml
-    env:
-      PASSWORD: ${{ secrets.PASSWORD || "cornmeal" }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "echo hello" >> ~/.bashrc
+          echo "var=corn" >> ~/.bashrc
+      - run: |
+          echo $var
