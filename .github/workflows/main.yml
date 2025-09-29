@@ -11,3 +11,5 @@ jobs:
       cmd: |
         echo hello
         echo world
+  nocmd:
+    uses: ./.github/workflows/callable.yml

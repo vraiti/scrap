@@ -10,6 +10,15 @@ jobs:
     steps:
       - name: Print
         run: |
-          cat <<EOF | sh 
+          FILE=$(mktemp) 
+          cat <<EOF > $FILE
           ${{ inputs.cmd }}
           EOF
+         
+          wc -c "$FILE" 
+
+          if [[ $(wc -c "$FILE") -eq 0 ]]; then
+            echo "No command given"
+          else
+            cat $FILE | sh
+          fi
