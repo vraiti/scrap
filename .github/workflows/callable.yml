@@ -1,17 +1,15 @@
 name: Callable workflow
 on:
   workflow_call:
+    inputs:
+      cmd:
+        type: string
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
       - name: Print
         run: |
-          echo hello!
-          if [[ ${{ env.PASSWORD }} = "cornflakes" ]]; then
-            echo "user: flakes"
-          elif [[ ${{ env.PASSWORD }} = "cornmeal"]]
-            echo "user: meal"
-          else
-            echo "login unsuccessful"
-          fi  
+          cat <<EOF | sh 
+          ${{ inputs.cmd }}
+          EOF
